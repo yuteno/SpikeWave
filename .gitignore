@@ -1,2 +1,2 @@
-*/*.pyc
+src/__pycache__/
 src/fig

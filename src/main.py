@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 
 
 
-net = Network(20, 20, 1.0)
+net = Network(20, 20, 1.0, (0,3), (19,17))
 
 
 map_ = np.ones((20, 20)) * 2
@@ -22,7 +22,7 @@ for _ in range(8):
 #plt.imshow(map_, interpolation='nearest', vmin=0, vmax = 10, cmap='jet')
 #plt.colorbar()
 #plt.show()
-net.neurons[0][0].I += 1
+#net.neurons[0][0].I += 1
 for i in range(100):
     net.step(map_)
     plt.subplot(2,2,1)
@@ -41,6 +41,6 @@ for i in range(100):
     plt.colorbar()
     plt.savefig(f"fig/wo_road/{i}.png")
     plt.close()
-    if net.terninated:
+    if net.terminated:
         break
 
