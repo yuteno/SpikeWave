@@ -4,17 +4,17 @@ import matplotlib.pyplot as plt
 
 
 
-net = Network(20, 20, 1.0)
+net = Network(3, 3, 1.0)
 
 
-map_ = np.ones((20, 20)) * 2
+#map_ = np.random.randint(0, 8, (20, 20))
+map_ = np.ones((3, 3)) * 6
+map_[0][0] = 1
+map_[0][1] = 2
+map_[1][0] = 1
+map_[2][0] = 2
+map_[2][2] = 1
 
-map_[5:13, 3:15] = 3
-
-for _ in range(8):
-    x = np.random.randint(0,17)
-    y = np.random.randint(0,17)
-    map_[x:x+1, y:y+1] = 9
 
 
 
@@ -23,7 +23,7 @@ for _ in range(8):
 #plt.colorbar()
 #plt.show()
 net.neurons[0][0].I += 1
-for i in range(100):
+for i in range(50):
     net.step(map_)
     plt.subplot(2,2,1)
     plt.imshow(net.spike_map, interpolation='nearest', vmin=0, vmax = 10, cmap='jet')
@@ -39,8 +39,5 @@ for i in range(100):
     plt.title("map")
 
     plt.colorbar()
-    plt.savefig(f"fig/wo_road/{i}.png")
+    plt.savefig(f"fig/sample/{i}.png")
     plt.close()
-    if net.terninated:
-        break
-

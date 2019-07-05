@@ -29,6 +29,7 @@ class Network:
         self.D = np.ones((height * width, height * width )) * 5
         self.in_indexes = np.zeros((height * width, height * width))
         self.spike_map = np.zeros((height, width))
+        self.spike_map_noupdate = np.zeros((height, width))
 
         self.neurons = [[0 for j in range(width)] for i in range(height)]
         for i in range(height):
@@ -63,12 +64,7 @@ class Network:
                 if neuron.spike():
                     self.d[:, index] = self.D[:, index]
                     self.spike_map[i][j] = 9
+                    self.spike_map_noupdate[i][j] = 9
                 self.D[index,:] += self.lr * (map_in[i, j] - self.D[index, :])
-
-
-
-
-
-
 
 
