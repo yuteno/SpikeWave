@@ -59,6 +59,9 @@ class Network:
 
         self.neurons[start[0]][start[1]].I += 1
 
+    @property
+    def terminated(self):
+        return self._terminated
 
     def step(self, map_in):
         self.spike_map = np.zeros_like(self.spike_map)
@@ -103,7 +106,7 @@ class Network:
                         continue
 
                     if spike_map[_y][_x] == self.SPIKED:
-                        print(t, _y, _x)
+                        #print(t, _y, _x)
                         temp_point = np.array([_y, _x])
                         temp_dist = np.linalg.norm(temp_point - start_point)
                         if temp_dist < distance:
@@ -112,18 +115,8 @@ class Network:
             current_point = candidate
             path_map[current_point[0], current_point[1]] = self.SPIKED
             if (current_point == start_point).all():
-                print(current_point)
-                print(start_point)
-                print("readout break")
+                #print(current_point)
+                #print(start_point)
+                #print("readout break")
                 break
         return path_map
-
-
-
-
-    @property
-    def terminated(self):
-        return self._terminated
-
-
-
