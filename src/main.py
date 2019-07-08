@@ -1,8 +1,10 @@
 import numpy as np
 from neuron import Network
 import matplotlib.pyplot as plt
-if __name__ == '__main__':
 
+
+
+if __name__ == '__main__':
     net = Network(3, 3, 1.0, (0,0), (2,2))
     map_ = np.ones((3,3)) * 5
     map_[0, 0:2] = 1
@@ -10,8 +12,8 @@ if __name__ == '__main__':
     map_[1,0] = 2
     map_[2,2] = 1
     directory = "sample"
-    """
 
+    """
     start = (0, 3)
     goal = (19, 17)
     net = Network(20, 20, 1.0, start, goal)
@@ -29,10 +31,6 @@ if __name__ == '__main__':
     """
 
 
-    #plt.imshow(map_, interpolation='nearest', vmin=0, vmax = 10, cmap='jet')
-    #plt.colorbar()
-    #plt.show()
-    #net.neurons[0][0].I += 1
     for i in range(100):
         plt.subplots_adjust(wspace=0.4, hspace=0.6)
         plt.subplot(2,2,1)
